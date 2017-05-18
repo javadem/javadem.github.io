@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 
 
 
+
 import ua.dto.filter.ProducerFilter;
 import ua.dto.form.PaymentForm;
 import ua.entity.Payment;
@@ -22,6 +23,8 @@ public interface PaymentService {
 	Payment save(int id);
 	
 	void delete(int id);
+	
+	String createNewPayment(int id);
 	
 	Payment save(Payment payment) ;
 

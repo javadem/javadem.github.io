@@ -160,6 +160,11 @@ public class ShopingCartUserController {
 	
 	@RequestMapping("/createPayment/{id}")
 	public String createPayment(@PathVariable int id){
+		return paymentService.createNewPayment(id);
+	}
+	
+/*	@RequestMapping("/createPayment/{id}")
+	public String createPayment(@PathVariable int id){
 		if(!(shopingCartService.findOne(id).getProducts().isEmpty() )){
 			if((paymentService.findOnePaymentByCartId(id)==null)){
 			Payment payment = new Payment();
@@ -178,7 +183,7 @@ public class ShopingCartUserController {
 		
 		return "redirect:/user/payment/"+paymentId;
 
-	}
+	}*/
 	
 	
 	@RequestMapping("/{shopingCartId}/deleteProductFromCart/{productId}")

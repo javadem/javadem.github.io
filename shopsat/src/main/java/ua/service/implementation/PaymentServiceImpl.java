@@ -16,6 +16,7 @@ import ua.repository.PaymentRepository;
 import ua.repository.ShopingCartRepository;
 import ua.service.PaymentService;
 import ua.service.ShopingCartService;
+import ua.service.UserService;
 import ua.service.implementation.ProductServiceImpl;
 
 @Service
@@ -28,6 +29,9 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
 	private ShopingCartService shopingCartService ;
+	
+	@Autowired
+	private UserService userService;
 	
 	
 
@@ -140,8 +144,34 @@ public class PaymentServiceImpl implements PaymentService {
 		paymentRepository.delete(id);
 	}
 
-
-
+	
+	@Transactional
+	public String createNewPayment(int id){
+	if((shopingCartService.findOne(id).getProducts().isEmpty() )){
+		
+		System.out.println("Додайте товар в корзину");
+		return "redirect:/user/product";
+		
+		
+		
+	} else {
+		System.out.println("mmmmmmmmmmmmmmmm");
+		if((paymentRepository.findOnePaymentByCartId(id)==null)){
+		Payment payment = new Payment();
+		payment.setEmail(userService.findUserByCartId(id).getEmail());
+		payment.setAmount(shopingCartService.findOne(id).getAmount());
+		payment.setText("Вітаємо з покупкою! Оплатити кошти в сумі "+payment.getAmount()+" грн можна на банківський рахунок № 1234 5678 9010 1112 . "
+				+ "Копію замовлення буде відправлено на Вашу електронну пошту "+payment.getEmail());
+		payment.setShopingCart(shopingCartService.findOne(id));
+		paymentRepository.save(payment);
+		
+		}
+	}
+//	return "";
+		int paymentId = paymentRepository.findOnePaymentByCartId(id).getId().intValue();
+		System.out.println("nnnnnnnnnnnnnnnnnn");
+		return "redirect:/user/payment/"+paymentId;
+}
 
 	
 	

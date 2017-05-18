@@ -70,9 +70,9 @@
 					<h3>Перегляд</h3>
 				</div>
 
-<!-- 				<div class="col-md-1 col-xs-1">
+ 				<div class="col-md-1 col-xs-1">
 					<h3>Delete</h3>
-				</div> -->
+				</div> 
 			</div>
 			<c:forEach items="${products}" var="product">
 				<div class="row listProductsInCart ">
@@ -91,10 +91,10 @@
 					</div>
 	
 
-<%-- 					<div class="col-md-1 col-xs-1">
+ 					<div class="col-md-1 col-xs-1">
 						<a class="btn btn-danger"
 							href="/user/shopingCart/${shopingCart.id}/deleteProductFromCart/${product.id}">delete</a>
-					</div> --%>
+					</div> 
 				</div>
 				<br>
 			</c:forEach>
