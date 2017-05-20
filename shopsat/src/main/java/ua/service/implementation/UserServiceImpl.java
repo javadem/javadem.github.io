@@ -226,9 +226,9 @@ public class UserServiceImpl implements UserDetailsService, UserService, Princip
 		User user = userRepository.findOne(id);
 		user.setEmail(userForm.getEmail());
 		user.setPassword(userForm.getPassword());
-		user.setUsername(userForm.getUsername());
+//		user.setUsername(userForm.getUsername());
 		System.out.println(user.getUsername());
-		user.setId(id);
+//		user.setId(id);
 		System.out.println("eeeeeeeeeeeeeeeeeee");
 		userRepository.save(user);
 		System.out.println("ffffffffffffffffff");

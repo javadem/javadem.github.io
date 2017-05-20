@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.dto.form.PaymentForm;
 import ua.entity.Payment;
 import ua.entity.Product;
+import ua.entity.Role;
 import ua.entity.ShopingCart;
 import ua.repository.PaymentRepository;
 import ua.repository.ShopingCartRepository;
@@ -151,27 +152,27 @@ public class PaymentServiceImpl implements PaymentService {
 		
 		System.out.println("Додайте товар в корзину");
 		return "redirect:/user/product";
-		
-		
-		
-	} else {
-		System.out.println("mmmmmmmmmmmmmmmm");
-		if((paymentRepository.findOnePaymentByCartId(id)==null)){
-		Payment payment = new Payment();
-		payment.setEmail(userService.findUserByCartId(id).getEmail());
-		payment.setAmount(shopingCartService.findOne(id).getAmount());
-		payment.setText("Вітаємо з покупкою! Оплатити кошти в сумі "+payment.getAmount()+" грн можна на банківський рахунок № 1234 5678 9010 1112 . "
-				+ "Копію замовлення буде відправлено на Вашу електронну пошту "+payment.getEmail());
-		payment.setShopingCart(shopingCartService.findOne(id));
-		paymentRepository.save(payment);
-		
-		}
-	}
-//	return "";
+		} else {
+			if(userService.findUserByCartId(id).getRole()==Role.ROLE_ANONYMOUS){
+//////////	
+//			List <Product> tempList =	shopingCartService.findOne(id).getProducts() ;		
+			}else{
+				if((paymentRepository.findOnePaymentByCartId(id)==null)){
+				Payment payment = new Payment();
+				payment.setEmail(userService.findUserByCartId(id).getEmail());
+				payment.setAmount(shopingCartService.findOne(id).getAmount());
+				payment.setText("Вітаємо з покупкою! Оплатити кошти в сумі "+payment.getAmount()+" грн можна на банківський рахунок № 1234 5678 9010 1112 . "
+						+ "Копію замовлення буде відправлено на Вашу електронну пошту "+payment.getEmail());
+				payment.setShopingCart(shopingCartService.findOne(id));
+				paymentRepository.save(payment);
+				
+				}
+			}
+			}
 		int paymentId = paymentRepository.findOnePaymentByCartId(id).getId().intValue();
-		System.out.println("nnnnnnnnnnnnnnnnnn");
+		
 		return "redirect:/user/payment/"+paymentId;
-}
+	}
 
 	
 	

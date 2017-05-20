@@ -97,7 +97,7 @@ public class UserUserController {
 }
 //	
 	
-	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public String update(@PathVariable int id, @ModelAttribute("user")  User user, BindingResult br, SessionStatus status, Model model){
 		if(br.hasErrors()){
 			model.addAttribute("users", userService.findAll());
@@ -112,12 +112,12 @@ public class UserUserController {
 //		return "redirect:/admin/user"+getParams(pageable, filter);
 //		return "redirect:/user/user"+getParams(pageable);
 		return "redirect:/user/user"+id;
-	}
+	}*/
 	
-/*	@RequestMapping(value = "/update/{id}")
-	public String update(@PathVariable int id, Model model){
+	@RequestMapping(value = "/update/{id}")
+	public String update(@PathVariable int id, User user, Model model){
 		System.out.println("AAAAAAAAAAAAAA");
-
+		userService.update(id, user);
 		System.out.println("BBBBBBBBBBBBBB");
 //		userService.update(id);
 		model.addAttribute("user", userService.findOne(id));
@@ -128,8 +128,9 @@ public class UserUserController {
 		System.out.println("CCCCCCCCCCCCC");
 //		status.setComplete();
 		System.out.println("DDDDDDDDDDDDDDDDDDD");
-		return "redirect:/login";
-	}*/
+//		return "redirect:/login";
+		return "redirect:/user/user/"+id;
+	}
 	
 	
 	

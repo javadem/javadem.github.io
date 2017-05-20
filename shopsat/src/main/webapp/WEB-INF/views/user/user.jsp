@@ -7,7 +7,7 @@
 	prefix="security"%>
 
 
-<security:authorize access="isAuthenticated()">
+<security:authorize access="hasRole('ROLE_ADMIN')">
 	
 
 	<div class="row oneBlock">

@@ -23,8 +23,8 @@
 			
 			<h1>Сторінка користувача ${user.username}</h1>
 			
-<%-- 			
-				<div class="col-md-12 col-xs-12">
+ 			
+<%-- 				<div class="col-md-12 col-xs-12">
 					<form:form class="form-horizontal" action="/user/user"
 						method="POST" modelAttribute="user">
 
@@ -70,10 +70,10 @@
 							</div>
 						</div>
 					</form:form>
-				</div>
+				</div> --%>
 			</div>
 			
-	 --%>		
+	 		
 			
 			<div class="row">
 				<div class="col-md-2 col-xs-2">
@@ -83,12 +83,12 @@
 					<h3>E-mail</h3>
 				</div>
 				
-				<div class="col-md-2 col-xs-2">
+<!-- 				<div class="col-md-2 col-xs-2">
 					<h3>Оновити</h3>
 				</div>
 				<div class="col-md-3 col-xs-3">
 					<h3>Видалити</h3>
-				</div>
+				</div> -->
 				<div class="col-md-2 col-xs-2">
 					<h3>Кошик</h3>
 				</div>
@@ -99,12 +99,12 @@
 					<div class="col-md-2 col-xs-2">${user.username}</div>
 					<div class="col-md-3 col-xs-3">${user.email}</div>
 					
-					<div class="col-md-2 col-xs-2">
+<%-- 					<div class="col-md-2 col-xs-2">
 						<a class="btn btn-warning" href="/user/user/update/${user.id}">Оновити</a>
 					</div>
 					<div class="col-md-3 col-xs-3">
 						<a class="btn btn-danger" href="/user/user/delete/${user.id}">Видалити</a>
-					</div>
+					</div> --%>
 					<div class="col-md-2 col-xs-2">
 						<c:forEach items="${shopingCarts}" var="shopingCart">
 							<div class="row">

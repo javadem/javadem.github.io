@@ -8,7 +8,7 @@
 
 
 
-
+<security:authorize access="hasRole('ROLE_ADMIN')">
 
 
 
@@ -117,3 +117,4 @@
 
 </div>
 
+</security:authorize>
