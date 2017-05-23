@@ -33,7 +33,7 @@ public interface UserRepository extends JpaRepository<User, Integer>{
 	User findOneUserByCartId(@Param("id")int id);
 	
 	@Query("SELECT  u FROM User u  "
-			+ "LEFT JOIN FETCH u.shopingCart sc "
+			+ "JOIN u.shopingCart sc "
 			+ "WHERE sc.id=:id"
 			)
 	List<User> findAllUsersByCartId(@Param("id")int id);

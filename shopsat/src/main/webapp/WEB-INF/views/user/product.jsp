@@ -179,8 +179,8 @@
 						Sort <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<custom:sort innerHtml="Name asc" paramValue="Назва А-Я" />
-						<custom:sort innerHtml="Name desc" paramValue="Назва Я=А" />
+						<custom:sort innerHtml="Name asc" paramValue="nameProduct" />
+						<custom:sort innerHtml="Name desc" paramValue="nameProduct,desc" />
 						<custom:sort innerHtml="Price asc" paramValue="price" />
 						<custom:sort innerHtml="Price desc" paramValue="price,desc" />
 					</ul>

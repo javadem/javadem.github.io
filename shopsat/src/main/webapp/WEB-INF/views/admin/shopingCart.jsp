@@ -54,17 +54,17 @@
 
 		<div class="row">
 			<div class="col-md-12 col-xs-12">
-				<form:form class="form-horizontal" action="/admin/shopingCart"
+<%-- 				<form:form class="form-horizontal" action="/admin/shopingCart"
 					method="POST" modelAttribute="shopingCart" >
 
-<%-- 					<input type="hidden" value="${shopingCart.id}" name="shopingCartId"> --%>
+					<input type="hidden" value="${shopingCart.id}" name="shopingCartId">
 
-<%-- - 					<div class="form-group">
+- 					<div class="form-group">
 						<label for="name" class="col-sm-2 control-label">Id</label>
 						<div class="col-sm-10">
 							<form:input type="text" class="form-control" path="id" id="name" />
 						</div>
-					</div>  --%>
+					</div> 
 					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">User</label>
@@ -98,7 +98,7 @@
 							<button type="submit" class="btn btn-default">Create</button>
 						</div>
 					</div>
-				</form:form>
+				</form:form> --%>
 			</div>
 		</div>
  		<div class="row">
@@ -108,12 +108,12 @@
 <!-- 			<div class="col-md-2 col-xs-2">
 				<h3>Product</h3>
 			</div> -->
-			<div class="col-md-2 col-xs-2">
+<!-- 			<div class="col-md-2 col-xs-2">
 				<h3>User</h3>
-			</div>
-			<div class="col-md-2 col-xs-2">
+			</div> -->
+<!-- 			<div class="col-md-2 col-xs-2">
 				<h3>Update</h3>
-			</div>
+			</div> -->
 			<div class="col-md-2 col-xs-2">
 				<h3>Delete</h3>
 			</div><div class="col-md-2 col-xs-2">
@@ -124,16 +124,16 @@
 			<div class="row">
 				<div class="col-md-2 col-xs-2">${shopingCart.id}</div>
 		
-				<div class="col-md-2 col-xs-2">
+<%-- 				<div class="col-md-2 col-xs-2">
 					 <c:forEach items="${users}" var="user"> 
 						<div class="row">
 							<div class="col-md-2 col-xs-2">${user.username}</div>
 						</div>
 					</c:forEach> 
-				 </div> 
-				<div class="col-md-2 col-xs-2">
+				 </div>  --%>
+<%-- 				<div class="col-md-2 col-xs-2">
 					<a class="btn btn-warning" href="/admin/shopingCart/update/${shopingCart.id}">update</a>
-				</div>
+				</div> --%>
 				<div class="col-md-2 col-xs-2">
 					<a class="btn btn-danger" href="/admin/shopingCart/delete/${shopingCart.id}">delete</a>
 				</div>

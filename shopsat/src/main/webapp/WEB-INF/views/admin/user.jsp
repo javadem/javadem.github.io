@@ -126,9 +126,9 @@
 			<div class="col-md-2 col-xs-3">
 				<h3>Show user</h3>
 			</div>
-			<div class="col-md-2 col-xs-2">
+<!-- 			<div class="col-md-2 col-xs-2">
 				<h3>Update</h3>
-			</div>
+			</div> -->
 			<div class="col-md-1 col-xs-1">
 				<h3>Delete</h3>
 			</div>
@@ -142,10 +142,10 @@
 				<div class="col-md-2 col-xs-2">
 					<a class="btn btn-success" href="/admin/user/${user.id}">show user</a>
 				</div>
-				<div class="col-md-2 col-xs-2">
+<%-- 				<div class="col-md-2 col-xs-2">
 					<a class="btn btn-warning"
 						href="/admin/user/update/${user.id}">update</a>
-				</div>
+				</div> --%>
 				<div class="col-md-1 col-xs-1">
 					<a class="btn btn-danger"
 						href="/admin/user/delete/${user.id}">delete</a>

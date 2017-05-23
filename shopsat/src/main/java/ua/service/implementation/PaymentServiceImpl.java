@@ -3,6 +3,9 @@ package ua.service.implementation;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -146,8 +149,17 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	
+	@Override
+	public String createNewPayment(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 	@Transactional
-	public String createNewPayment(int id){
+//	public String createNewPayment(int id){
+		public String createNewPayment(int id, HttpServletRequest request){	
 	if((shopingCartService.findOne(id).getProducts().isEmpty() )){
 		
 		System.out.println("Додайте товар в корзину");
@@ -155,7 +167,9 @@ public class PaymentServiceImpl implements PaymentService {
 		} else {
 			if(userService.findUserByCartId(id).getRole()==Role.ROLE_ANONYMOUS){
 //////////	
-//			List <Product> tempList =	shopingCartService.findOne(id).getProducts() ;		
+				HttpSession mySession = request.getSession();
+				System.out.println(mySession.getId());	
+			List <Product> tempList =	shopingCartService.findOne(id).getProducts() ;		
 			}else{
 				if((paymentRepository.findOnePaymentByCartId(id)==null)){
 				Payment payment = new Payment();

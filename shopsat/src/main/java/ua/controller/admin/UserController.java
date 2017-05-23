@@ -114,9 +114,9 @@ public class UserController {
 		public String update(@PathVariable int id, Model model){
 //		public String update(@PathVariable int id, Model model,  @PageableDefault Pageable pageable){
 //		public String update(@PathVariable int id, Model model, @ModelAttribute("filter") UserFilter filter, @PageableDefault Pageable pageable){
-//			model.addAttribute("user", userService.findOne(id));
+			model.addAttribute("user", userService.findOne(id));
 			model.addAttribute("shopingCarts", shopingCartService.findAll());
-			model.addAttribute("users", userService.findAll());
+//			model.addAttribute("users", userService.findAll());
 //			model.addAttribute("page", userService.findAll( pageable));
 //			model.addAttribute("page", userService.findAll( filter, pageable));
 			return "admin-user";

@@ -35,6 +35,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
+import ua.dto.filter.BasicFilter;
 import ua.dto.filter.ProductFilter;
 import ua.dto.form.ProductForm;
 import ua.editor.CategoryEditor;
@@ -64,7 +65,7 @@ import ua.validator.ProductValidator;
 
 @Controller
 @RequestMapping("/user/product")
-@SessionAttributes(names="product")
+@SessionAttributes(names="userProduct")
 public class ProductUserController {
 	
 	@Autowired
@@ -95,13 +96,7 @@ public class ProductUserController {
 	private CategoryService categoryService;
 	
 
-//	@Inject
-//	public ProductController(ProductService productService, ModelService modelService, MeasureService measureService) {
-//		super();
-//		this.productService = productService;
-//		this.modelService = modelService;
-//		this.measureService = measureService;
-//	}
+
 
 	@InitBinder("product")
 	protected void initBinder(WebDataBinder binder) {
@@ -141,11 +136,7 @@ public class ProductUserController {
 		model.addAttribute("countries", countryService.findAll());
 		model.addAttribute("categories", categoryService.findAll());
 		model.addAttribute("shopingCarts", shopingCartService.findAll());
-//		model.addAllAttributes("shopingCarts", shopingCartService.findAll());
-//		model.addAttribute("measures", measureService.findAll(pageble));
-//		model.addAttribute("products", productService.findAll());
-//		model.addAttribute("page", productService.findAll( pageable));
-//		model.addAttribute("measures", measureService.findAll(pageble));
+
 		status.setComplete();
 		return "user-product";
 	}
@@ -159,24 +150,16 @@ public class ProductUserController {
 //		return "redirect:/user/product";
 	}
 	
-//	@RequestMapping("/add/{id}")
-////	public String showAdd(@PathVariable int id, Model model, @PageableDefault Pageable pageable){
-//	public String showAdd(@PathVariable int id, Model model, @PageableDefault Pageable pageable, @ModelAttribute("filter") ProductFilter filter){
-//		model.addAttribute("measures", measureService.findAll());
-//		model.addAttribute("page", productService.findAll(filter, pageable));
-////		model.addAttribute("page", productService.findAll( pageable));
-//		model.addAttribute("model", modelService.findOne(id));
-//		return "user-product";
-//	}
+
 
 	@RequestMapping("/add/{id}")
 	public String add(@PathVariable int id, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
 //	public String delete(@PathVariable int id,  @PageableDefault Pageable pageable){	
 		productService.addToOrder(id);
 		return "redirect:/user/product"+getParams(filter, pageable);
-//		return "redirect:/admin/product"+getParams(pageable);
-//		return "redirect:/admin/product";
+
 	}
+	
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String getProduct(SessionStatus status, @PathVariable("id") int id, Model model) {
@@ -193,6 +176,7 @@ public class ProductUserController {
 	    status.setComplete();
 	    return "user-productUnit";
 	}
+	
 	
 	@GetMapping("/buyPR/{productId}") //PRINCIPAL method
 	public String buyPR(Principal principal , @PathVariable int productId){
@@ -214,33 +198,19 @@ public class ProductUserController {
 		return "redirect:/user/shopingCart/"+cartId;
 	}
 	
-/*	@GetMapping("/buy/{productId}")
-	public void buy(@CookieValue(defaultValue="0", name="userId")int userId, @PathVariable int productId){
 
-		ShopingCart cart = new ShopingCart();
-		cart.add(e);
-		userService.addToShoppingCart(userId, productId);
-	}*/
-	
 	
 	@RequestMapping(method=POST)
 	public String save(@ModelAttribute("product") @Valid ProductForm productForm, BindingResult br, Model model, SessionStatus sessionStatus, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
-//	public String save(@ModelAttribute("product") @Valid ProductForm productForm, BindingResult br, SessionStatus status, Model model,  @PageableDefault Pageable pageable){
-//	public String save(@ModelAttribute("product") @Valid ProductForm productForm, BindingResult br, Model model, SessionStatus sessionStatus, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
-//	public String save(@ModelAttribute("filter") @Valid ProductForm productForm, BindingResult br, SessionStatus status, Model model, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
 		if(br.hasErrors()){
-//			model.addAttribute("products", productService.findAll());
-//			model.addAttribute("page", productService.findAll( pageable));
 			model.addAttribute("page", productService.findAll( filter, pageable));
 			model.addAttribute("models", modelService.findAll());
-//			model.addAttribute("models", product.getModel());
 			model.addAttribute("measures", measureService.findAll());
 			model.addAttribute("producers", producerService.findAll());
 			model.addAttribute("typeProducts", typeProductService.findAll());
 			model.addAttribute("countries", countryService.findAll());
 			model.addAttribute("categories", categoryService.findAll());
 			model.addAttribute("shopingCarts", shopingCartService.findAll());
-//			model.addAttribute("models", product.getModel());
 			return "user-product";
 		}
 		productService.save(productForm);
@@ -252,7 +222,7 @@ public class ProductUserController {
 
 
 
-	@RequestMapping("/update/{id}")
+/*	@RequestMapping("/update/{id}")
 	public String update(@PathVariable int id, Model model, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
 //		model.addAttribute("products", productService.findAll());
 		model.addAttribute("product", productService.findOne(id));
@@ -260,7 +230,7 @@ public class ProductUserController {
 		model.addAttribute("models", modelService.findAll());
 		model.addAttribute("measures", measureService.findAll());
 		return "user-product";
-	}
+	}*/
 	
 	private String getParams(ProductFilter filter, Pageable pageable ){
 		StringBuilder buffer = new StringBuilder();
@@ -325,7 +295,7 @@ public class ProductUserController {
 		return buffer.toString();
 	}
 	
-	
+
 
 	
 }

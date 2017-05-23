@@ -234,7 +234,7 @@ public class ProductController {
 			@ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
 //	public String save(@ModelAttribute("filter") @Valid ProductForm productForm, BindingResult br, SessionStatus status, Model model, @ModelAttribute("filter") ProductFilter filter, @PageableDefault Pageable pageable){
 		if(br.hasErrors()){
-//			model.addAttribute("page", productService.findAll( filter, pageable));
+			model.addAttribute("page", productService.findAll( filter, pageable));
 			model.addAttribute("models", modelService.findAll());
 			model.addAttribute("measures", measureService.findAll());
 			model.addAttribute("listProducts", productService.findAll());

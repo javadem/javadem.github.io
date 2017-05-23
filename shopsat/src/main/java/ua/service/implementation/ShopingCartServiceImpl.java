@@ -75,10 +75,6 @@ public class ShopingCartServiceImpl implements ShopingCartService{
 	}
 
 
-
-	
-
-
 	@Override
 	public void delete(int id) {
 		// TODO Auto-generated method stub
@@ -93,34 +89,7 @@ public class ShopingCartServiceImpl implements ShopingCartService{
 		return shopingCartRepository.findOne(id);
 	}
 
-	
-	
-	
-/*	@Override
-	public ShopingCartForm findOneCartById(int id) {
-		// TODO Auto-generated method stub
-		ShopingCartForm shopingCartForm = new ShopingCartForm();
-		ShopingCart shopingCart = shopingCartRepository.findOne(id);
-		shopingCartForm.setId(shopingCart.getId());
-		shopingCartForm.setAmount(shopingCart.getAmount().toString());
-		shopingCartForm.setCount(shopingCart.getCount());
-		shopingCartForm.setProducts(shopingCart.getProducts());
-		shopingCartForm.setUsers(shopingCart.getUsers());
-		return shopingCartForm;
-	}
 
-	@Override
-	@Transactional
-	public void save(ShopingCartForm shoppingCartForm) {
-		// TODO Auto-generated method stub
-		ShopingCart shopingCart = new ShopingCart();
-		shopingCart.setAmount(new BigDecimal(shoppingCartForm.getAmount()));
-//		shopingCart.setAmount(shoppingCartForm.getAmount());
-		shopingCart.setCount(shoppingCartForm.getCount());
-		shopingCart.setId(shoppingCartForm.getId());
-		shopingCart.setProducts(shoppingCartForm.getProducts());
-		shopingCart.setUsers(shoppingCartForm.getUsers());
-	}*/
 
 	@Override
 	public void save(ShopingCart shoppingCart) {
@@ -144,7 +113,7 @@ public class ShopingCartServiceImpl implements ShopingCartService{
 			cart = shopingCartRepository.save(new ShopingCart());
 			user.setShopingCart(cart);
 		}
-//		int amount = cart.
+
 		Product product = productRepository.findOne(productId);
 		
 		cart.add(product);
@@ -155,20 +124,17 @@ public class ShopingCartServiceImpl implements ShopingCartService{
 	@Override
 	public void deleteProductFromCart(int shopingCartId, int productId) {
 		// TODO Auto-generated method stub
-		System.out.println("11111111111111111");
-		ShopingCart shopingCart = shopingCartRepository.findOne(shopingCartId);
-		System.out.println("222222222222222");
-		List<Product> productsOld = shopingCart.getProducts();
-		System.out.println("333333333333333333");
 
-		
+		ShopingCart shopingCart = shopingCartRepository.findOne(shopingCartId);
+
+		List<Product> productsOld = shopingCart.getProducts();
+
 		Iterator<Product> iterator = productsOld.iterator();
 		while (iterator.hasNext()) {
 			Product product = iterator.next();
-			System.out.println("44444444444444444");
+
 			if(product.getId()==productId) {
-				System.out.println(product.getId());
-				System.out.println("555555555555555");	
+
 			iterator.remove();
 			
 			System.out.println(product);
