@@ -2,7 +2,16 @@ package ua.service.implementation;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Properties;
 
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -178,6 +187,7 @@ public class PaymentServiceImpl implements PaymentService {
 				payment.setText("Вітаємо з покупкою! Оплатити кошти в сумі "+payment.getAmount()+" грн можна на банківський рахунок № 1234 5678 9010 1112 . "
 						+ "Копію замовлення буде відправлено на Вашу електронну пошту "+payment.getEmail());
 				payment.setShopingCart(shopingCartService.findOne(id));
+				sendMail("Замовлення "+id, payment.getEmail(), payment.getText());
 				paymentRepository.save(payment);
 				
 				}
@@ -189,5 +199,33 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	
+	
+	public void sendMail(String content, String email, String mailBody) {
+		Properties properties = System.getProperties();
+		properties.setProperty("mail.smtp.starttls.enable", "true");
+		properties.setProperty("mail.smtp.auth", "true");
+		properties.setProperty("mail.smtp.port", "465");
+		properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+		properties.setProperty("mail.smtp.socketFactory.port", "465");
+		properties.setProperty("mail.smtp.socketFactory.class",
+		"javax.net.ssl.SSLSocketFactory");
+		Session session = Session.getDefaultInstance(properties,
+		new Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication( "mail@com.ua" , "password12" );
+		}
+		});
+		try {
+		MimeMessage message = new MimeMessage(session);
+		message.setFrom(new InternetAddress("mail@com.ua" ));
+		message.addRecipient(Message.RecipientType. TO , new InternetAddress(
+		email));
+		message.setSubject(content, "UTF-8");
+		message.setText(mailBody);
+		Transport.send(message);
+		} catch (MessagingException е) {
+		е.printStackTrace();
+		}
+	}
 	
 }
