@@ -11,9 +11,9 @@ import javax.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 
-public class MeasureSpecification   implements Specification<Measure>{
+public class MeasureSpecification   implements Specification<MeasureString>{
 
 	private final BasicFilter filter;
 
@@ -34,7 +34,7 @@ public class MeasureSpecification   implements Specification<Measure>{
 		}
 
 
-		private void filterBySearch(Root<Measure> root, CriteriaQuery<?> query, CriteriaBuilder cb){
+		private void filterBySearch(Root<MeasureString> root, CriteriaQuery<?> query, CriteriaBuilder cb){
 			if(!filter.getSearch().isEmpty()){
 				predicates.add(cb.like(root.get("nameMeasure"), filter.getSearch()+"%"));
 			}
@@ -43,7 +43,7 @@ public class MeasureSpecification   implements Specification<Measure>{
 
 
 		@Override
-		public Predicate toPredicate(Root<Measure> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+		public Predicate toPredicate(Root<MeasureString> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 
 
 			query.distinct(true);

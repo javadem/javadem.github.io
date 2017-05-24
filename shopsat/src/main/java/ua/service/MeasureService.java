@@ -9,17 +9,17 @@ import ua.entity.*;
 
 public interface MeasureService {
 	
-	Measure findOne(int id);
+	MeasureString findOne(int id);
 	
-	List<Measure> findAll();
+	List<MeasureString> findAll();
 	
-	void save(Measure measure);
+	void save(MeasureString measure);
 	
 	void delete(int id);
 	
-	Measure findOne(String name);
+	MeasureString findOne(String name);
 	
-	Page<Measure> findAll(Pageable pageable);
+	Page<MeasureString> findAll(Pageable pageable);
 
-	Page<Measure> findAll(BasicFilter filter, Pageable pageable);
+	Page<MeasureString> findAll(BasicFilter filter, Pageable pageable);
 }

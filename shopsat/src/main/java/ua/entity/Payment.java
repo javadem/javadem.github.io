@@ -45,7 +45,7 @@ import ua.editor.TypeProductEditor;
 import ua.editor.UserEditor;
 import ua.entity.Category;
 import ua.entity.Country;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Payment;
 import ua.entity.Producer;
 import ua.entity.ShopingCart;

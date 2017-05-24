@@ -37,7 +37,7 @@ import ua.editor.PaymentEditor;
 import ua.editor.ProductEditor;
 import ua.editor.ShopingCartEditor;
 import ua.editor.UserEditor;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Payment;
 import ua.entity.Product;
 import ua.entity.ShopingCart;

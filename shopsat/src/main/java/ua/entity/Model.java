@@ -20,9 +20,9 @@ import javax.persistence.Index;
 @Table(name="model", indexes=@Index(columnList = "_name"))
 public class Model  extends AbstractClass{
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+/*	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "producer_id")
-	private Producer producer;
+	private Producer producer;*/
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "typeProduct_id")
@@ -40,38 +40,15 @@ public class Model  extends AbstractClass{
 		
 	}
 
-
-
-
-	public Model(Producer producer, TypeProduct typeProduct, String nameModel) {
+	public Model(TypeProduct typeProduct, String nameModel) {
 		super();
-		this.producer = producer;
 		this.typeProduct = typeProduct;
 		this.nameModel = nameModel;
 	}
 
-
-
-
-	public Producer getProducer() {
-		return producer;
-	}
-
-
-
-
-	public void setProducer(Producer producer) {
-		this.producer = producer;
-	}
-
-
-
-
 	public TypeProduct getTypeProduct() {
 		return typeProduct;
 	}
-
-
 
 
 	public void setTypeProduct(TypeProduct typeProduct) {

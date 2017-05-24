@@ -27,7 +27,7 @@ import ua.editor.ModelEditor;
 import ua.editor.ProductEditor;
 import ua.editor.ShopingCartEditor;
 import ua.editor.UserEditor;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Product;
 import ua.entity.ShopingCart;
 import ua.entity.User;

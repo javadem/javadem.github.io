@@ -128,7 +128,7 @@ public class ProductServiceImpl implements ProductService {
 			ProductForm productForm = new ProductForm();
 			Product product = productRepository.findOne(id);
 			productForm.setId(product.getId());
-			productForm.setNameProduct(product.getNameProduct());
+
 			productForm.setModel(product.getModel());
 			productForm.setDescription(product.getDescription());
 			productForm.setPrice(product.getPrice().toString());
@@ -165,7 +165,7 @@ public class ProductServiceImpl implements ProductService {
 //		Product product = productRepository.findOne(productForm.getId());
 		Product product = new Product();
 		product.setId(productForm.getId());
-		product.setNameProduct(productForm.getNameProduct());
+	
 		product.setModel(productForm.getModel());
 		product.setDescription(productForm.getDescription());
 		product.setPrice(new BigDecimal(productForm.getPrice().replace(',', '.')));
@@ -194,7 +194,7 @@ public class ProductServiceImpl implements ProductService {
 		Product product = productRepository.findOne(id);
 		ProductForm productForm = findOne(id);
 //		product.setId(productForm.getId());
-		product.setNameProduct(productForm.getNameProduct());
+	
 		product.setModel(productForm.getModel());
 		product.setDescription(productForm.getDescription());
 		product.setPrice(new BigDecimal(productForm.getPrice().replace(',', '.')));

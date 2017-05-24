@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Model;
 import ua.entity.ShopingCart;
 import ua.entity.User;
@@ -22,7 +22,7 @@ public class ProductForm {
 	
 	private String price ;
 	
-	private Measure measure;
+	private MeasureString measure;
 	
 	private int id;
 
@@ -41,7 +41,7 @@ public class ProductForm {
 
 
 	public ProductForm(Model model, String nameProduct, String description,
-		String price, Measure measure, int id, MultipartFile file,
+		String price, MeasureString measure, int id, MultipartFile file,
 		String version) {
 	super();
 	this.model = model;
@@ -100,13 +100,13 @@ public class ProductForm {
 
 
 
-	public Measure getMeasure() {
+	public MeasureString getMeasure() {
 		return measure;
 	}
 
 
 
-	public void setMeasure(Measure measure) {
+	public void setMeasure(MeasureString measure) {
 		this.measure = measure;
 	}
 

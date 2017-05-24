@@ -15,7 +15,7 @@ import javax.persistence.Index;
 
 @Entity
 @Table(name="measure", indexes=@Index(columnList = "_name"))
-public class Measure extends AbstractClass{
+public class MeasureString extends AbstractClass{
 	
 	@Column(name="_name")
 	private String nameMeasure;
@@ -26,12 +26,12 @@ public class Measure extends AbstractClass{
 
 	
 
-	public Measure() {
+	public MeasureString() {
 		
 	}
 
 
-	public Measure(String nameMeasure) {
+	public MeasureString(String nameMeasure) {
 		super();
 		this.nameMeasure = nameMeasure;
 	}

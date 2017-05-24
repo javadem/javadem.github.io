@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.service.MeasureService;
 
 public class MeasureValidator  implements Validator{
@@ -20,13 +20,13 @@ public class MeasureValidator  implements Validator{
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return clazz.equals(Measure.class);
+		return clazz.equals(MeasureString.class);
 	}
 	
 	
 	@Override
 	public void validate(Object target, Errors errors) {
-		Measure measure = (Measure) target;
+		MeasureString measure = (MeasureString) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nameMeasure", "", "Can`t be empty");
 		if(measureServiceMeasureValidator.findOne(measure.getNameMeasure())!=null){
 			errors.rejectValue("nameMeasure", "", "Already exist");

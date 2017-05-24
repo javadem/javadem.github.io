@@ -17,7 +17,7 @@ public class MeasureEditor  extends PropertyEditorSupport{
 	
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
-		Measure measure = measureService.findOne(Integer.valueOf(text));
+		MeasureString measure = measureService.findOne(Integer.valueOf(text));
 		setValue(measure);
 	}
 

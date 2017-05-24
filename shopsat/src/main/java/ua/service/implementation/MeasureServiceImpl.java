@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.repository.MeasureRepository;
 import ua.service.MeasureService;
 import ua.service.specification.MeasureSpecification;
@@ -23,20 +23,20 @@ public class MeasureServiceImpl implements MeasureService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public Measure findOne(int id) {
+	public MeasureString findOne(int id) {
 		// TODO Auto-generated method stub
 		return measureRepository.findOne(id);
 	}
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Measure> findAll() {
+	public List<MeasureString> findAll() {
 		// TODO Auto-generated method stub
 		return measureRepository.findAll();
 	}
 
 	@Override
-	public void save(Measure measure) {
+	public void save(MeasureString measure) {
 		// TODO Auto-generated method stub
 		measureRepository.save(measure);
 	}
@@ -50,7 +50,7 @@ public class MeasureServiceImpl implements MeasureService{
 	
 	
 	@Override
-	public Measure findOne(String name) {
+	public MeasureString findOne(String name) {
 		return measureRepository.findByName(name);
 	}
 
@@ -65,13 +65,13 @@ public class MeasureServiceImpl implements MeasureService{
 	}
 
 	@Override
-	public Page<Measure> findAll(Pageable pageable) {
+	public Page<MeasureString> findAll(Pageable pageable) {
 		// TODO Auto-generated method stub
 		return measureRepository.findAll(pageable);
 	}
 
 	@Override
-	public Page<Measure> findAll(BasicFilter filter, Pageable pageable) {
+	public Page<MeasureString> findAll(BasicFilter filter, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return measureRepository.findAll(new MeasureSpecification(filter), pageable);
 	}

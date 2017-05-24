@@ -21,7 +21,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 
 import ua.dto.filter.BasicFilter;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.service.MeasureService;
 import ua.validator.MeasureValidator;
 
@@ -36,8 +36,8 @@ public class MeasureController {
 
 	
 	@ModelAttribute("measure")
-	public Measure getForm(){
-		return new Measure();
+	public MeasureString getForm(){
+		return new MeasureString();
 	}
 	
 	@ModelAttribute("filter")
@@ -72,7 +72,7 @@ public class MeasureController {
 
 	
 	@RequestMapping(method=POST)
-	public String save(@ModelAttribute("measure") @Valid Measure measure, BindingResult br, SessionStatus status, Model model, @ModelAttribute("filter") BasicFilter filter, @PageableDefault Pageable pageable){
+	public String save(@ModelAttribute("measure") @Valid MeasureString measure, BindingResult br, SessionStatus status, Model model, @ModelAttribute("filter") BasicFilter filter, @PageableDefault Pageable pageable){
 		if(br.hasErrors()){
 //	//		model.addAttribute("measures", measureService.findAll());
 			model.addAttribute("page", measureService.findAll(filter, pageable));

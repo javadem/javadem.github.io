@@ -26,12 +26,19 @@ import ua.entity.Category;
 @Table(name="product", indexes=@Index(columnList = "_name, _description, _price") )
 public class Product  extends AbstractClass{
 	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "producer_id")
+	private Producer producer;
+	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "model_id")
 	private Model model;
 	
-	@Column(name="_name")
-	private String nameProduct;
+
+	private MeasureDigital measureDigital;
+	
+	private ValueDigital valueDigital;
+	
 
 	@Column(name="_description", length = 10000)
 	private String description;
@@ -41,10 +48,12 @@ public class Product  extends AbstractClass{
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "measure_id")
-	private Measure measure;
+	private MeasureString measure;
 	
-//	@Column(name="_count")
-//	private Integer count;
+	
+	private ValueString valueString;
+	
+
 	
 	@Transient
 	private MultipartFile file;
@@ -53,12 +62,7 @@ public class Product  extends AbstractClass{
 	@Version
 	private Integer version;
 	
-/*	@ManyToMany
-	(fetch = FetchType.EAGER, mappedBy="products")*/
-/*	@JoinTable(name="product_shopingCart",
-	joinColumns=@JoinColumn(name="id_product", referencedColumnName="id"),
-	inverseJoinColumns=@JoinColumn(name="id_shopingCart", referencedColumnName="id"))
-*/		@ManyToMany
+		@ManyToMany
 		@JoinTable(name="cart_product",
 		joinColumns = @JoinColumn(name="product_id"),
 		inverseJoinColumns = @JoinColumn(name="cart_id")
@@ -73,20 +77,24 @@ public class Product  extends AbstractClass{
 	}
 
 
+	public Product(Producer producer, Model model, MeasureDigital measureDigital, ValueDigital valueDigital,
+			String description, BigDecimal price, MeasureString measure, ValueString valueString, MultipartFile file,
+			Integer version) {
+		super();
+		this.producer = producer;
+		this.model = model;
+		this.measureDigital = measureDigital;
+		this.valueDigital = valueDigital;
+		this.description = description;
+		this.price = price;
+		this.measure = measure;
+		this.valueString = valueString;
+		this.file = file;
+		this.version = version;
+	}
 
-	public Product(Model model, String nameProduct, String description,
-		BigDecimal price, Measure measure, MultipartFile file, Integer version,
-		List<ShopingCart> shopingCarts) {
-	super();
-	this.model = model;
-	this.nameProduct = nameProduct;
-	this.description = description;
-	this.price = price;
-	this.measure = measure;
-	this.file = file;
-	this.version = version;
-	this.shopingCarts = shopingCarts;
-}
+
+
 
 
 
@@ -117,23 +125,15 @@ public class Product  extends AbstractClass{
 
 
 
-	public Measure getMeasure() {
+	public MeasureString getMeasure() {
 		return measure;
 	}
 
 
-	public void setMeasure(Measure measure) {
+	public void setMeasure(MeasureString measure) {
 		this.measure = measure;
 	}
 
-
-	public String getNameProduct() {
-		return nameProduct;
-	}
-
-	public void setNameProduct(String nameProduct) {
-		this.nameProduct = nameProduct;
-	}
 
 	@Override
 	public Integer getId() {
@@ -147,35 +147,8 @@ public class Product  extends AbstractClass{
 		super.setId(id);
 	}
 
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return super.clone();
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
 
-	@Override
-	protected void finalize() throws Throwable {
-		// TODO Auto-generated method stub
-		super.finalize();
-	}
-
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
-
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
 
 	public Integer getVersion() {
 		return version;
@@ -210,16 +183,45 @@ public class Product  extends AbstractClass{
 	}
 
 
-
-/*	public List<User> getUsers() {
-		return users;
+	public Producer getProducer() {
+		return producer;
 	}
 
 
+	public void setProducer(Producer producer) {
+		this.producer = producer;
+	}
 
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}*/
+
+	public MeasureDigital getMeasureDigital() {
+		return measureDigital;
+	}
+
+
+	public void setMeasureDigital(MeasureDigital measureDigital) {
+		this.measureDigital = measureDigital;
+	}
+
+
+	public ValueDigital getValueDigital() {
+		return valueDigital;
+	}
+
+
+	public void setValueDigital(ValueDigital valueDigital) {
+		this.valueDigital = valueDigital;
+	}
+
+
+	public ValueString getValueString() {
+		return valueString;
+	}
+
+
+	public void setValueString(ValueString valueString) {
+		this.valueString = valueString;
+	}
+
 
 	
 	

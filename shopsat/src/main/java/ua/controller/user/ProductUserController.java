@@ -47,7 +47,7 @@ import ua.editor.ShopingCartEditor;
 import ua.editor.TypeProductEditor;
 import ua.editor.UserEditor;
 import ua.entity.Country;
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Producer;
 import ua.entity.ShopingCart;
 import ua.entity.TypeProduct;
@@ -101,7 +101,7 @@ public class ProductUserController {
 	@InitBinder("product")
 	protected void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(ua.entity.Model.class, new ModelEditor(modelService));
-		binder.registerCustomEditor(Measure.class, new MeasureEditor(measureService));
+		binder.registerCustomEditor(MeasureString.class, new MeasureEditor(measureService));
 		binder.registerCustomEditor(User.class, new UserEditor(userService));
 		binder.registerCustomEditor(ShopingCart.class, new ShopingCartEditor(shopingCartService));
 		binder.registerCustomEditor(Producer.class, new ProducerEditor(producerService));

@@ -10,22 +10,22 @@ import org.springframework.data.repository.query.Param;
 
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 
-public interface MeasureRepository extends JpaRepository<Measure, Integer>, JpaSpecificationExecutor<Measure>{
+public interface MeasureRepository extends JpaRepository<MeasureString, Integer>, JpaSpecificationExecutor<MeasureString>{
 	
 	@Query("SELECT DISTINCT c FROM Measure c  WHERE c.id=:id")
-	Measure findOne(@Param("id")int id);
+	MeasureString findOne(@Param("id")int id);
 	
 	@Query("SELECT i FROM Measure i ")
-	List<Measure> findAll();
+	List<MeasureString> findAll();
 	
 	@Query("SELECT DISTINCT c FROM Measure c  WHERE c.nameMeasure=:name")
-	Measure findByName(@Param("name")String name);
+	MeasureString findByName(@Param("name")String name);
 	
 	@Query(value="SELECT i FROM Measure i "
 //			, countQuery="SELECT count(i.id) FROM Measure i"
 			)
-	Page<Measure> findAll(Pageable pageable);
+	Page<MeasureString> findAll(Pageable pageable);
 
 }

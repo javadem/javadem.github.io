@@ -158,17 +158,17 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	
-	@Override
+/*	@Override
 	public String createNewPayment(int id) {
 		// TODO Auto-generated method stub
 		return null;
-	}
+	}*/
 
 
 
 	@Transactional
 //	public String createNewPayment(int id){
-		public String createNewPayment(int id, HttpServletRequest request){	
+		public String createNewPayment(int id){	
 	if((shopingCartService.findOne(id).getProducts().isEmpty() )){
 		
 		System.out.println("Додайте товар в корзину");
@@ -176,9 +176,9 @@ public class PaymentServiceImpl implements PaymentService {
 		} else {
 			if(userService.findUserByCartId(id).getRole()==Role.ROLE_ANONYMOUS){
 //////////	
-				HttpSession mySession = request.getSession();
+/*				HttpSession mySession = request.getSession();
 				System.out.println(mySession.getId());	
-			List <Product> tempList =	shopingCartService.findOne(id).getProducts() ;		
+			List <Product> tempList =	shopingCartService.findOne(id).getProducts() ;		*/
 			}else{
 				if((paymentRepository.findOnePaymentByCartId(id)==null)){
 				Payment payment = new Payment();
@@ -198,10 +198,10 @@ public class PaymentServiceImpl implements PaymentService {
 		return "redirect:/user/payment/"+paymentId;
 	}
 
-	
-	
 	public void sendMail(String content, String email, String mailBody) {
 		Properties properties = System.getProperties();
+		
+	
 		properties.setProperty("mail.smtp.starttls.enable", "true");
 		properties.setProperty("mail.smtp.auth", "true");
 		properties.setProperty("mail.smtp.port", "465");
@@ -217,7 +217,7 @@ public class PaymentServiceImpl implements PaymentService {
 		});
 		try {
 		MimeMessage message = new MimeMessage(session);
-		message.setFrom(new InternetAddress("mail@com.ua" ));
+		message.setFrom(new InternetAddress( "mail@com.ua" ));
 		message.addRecipient(Message.RecipientType. TO , new InternetAddress(
 		email));
 		message.setSubject(content, "UTF-8");

@@ -9,7 +9,7 @@ import javax.persistence.Column;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import ua.entity.Measure;
+import ua.entity.MeasureString;
 import ua.entity.Model;
 import ua.entity.ShopingCart;
 import ua.entity.User;
