@@ -27,8 +27,7 @@ public class Producer  extends AbstractClass{
 	@Column(name="_name")
 	private String nameProducer;
 	
-	@OneToMany(mappedBy="producer")
-	private List<Model> models = new ArrayList<>();
+
 
 	
 	public Producer() {
@@ -64,14 +63,6 @@ public class Producer  extends AbstractClass{
 	}
 
 
-	public List<Model> getModels() {
-		return models;
-	}
-
-
-	public void setModels(List<Model> models) {
-		this.models = models;
-	}
 
 
 	@Override
