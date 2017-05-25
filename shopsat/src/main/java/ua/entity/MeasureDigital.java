@@ -1,17 +1,26 @@
 package ua.entity;
 
+import java.math.BigDecimal;
+
 public class MeasureDigital extends AbstractClass {
 	
 	private String nameMeasureDigital;
+	
+	private BigDecimal valueMeasureDigital;
 
 	public MeasureDigital() {
 		
 	}
 
-	public MeasureDigital(String nameMeasureDigital) {
+	
+
+	public MeasureDigital(String nameMeasureDigital, BigDecimal valueMeasureDigital) {
 		super();
 		this.nameMeasureDigital = nameMeasureDigital;
+		this.valueMeasureDigital = valueMeasureDigital;
 	}
+
+
 
 	public String getNameMeasureDigital() {
 		return nameMeasureDigital;

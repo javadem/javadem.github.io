@@ -20,6 +20,8 @@ public class MeasureString extends AbstractClass{
 	@Column(name="_name")
 	private String nameMeasure;
 	
+	private String valueMeasureString;
+	
 	@OneToMany(mappedBy="measure")
 	private List<Product> products = new ArrayList<>();
 	
@@ -30,11 +32,16 @@ public class MeasureString extends AbstractClass{
 		
 	}
 
+	
 
-	public MeasureString(String nameMeasure) {
+
+	public MeasureString(String nameMeasure, String valueMeasureString) {
 		super();
 		this.nameMeasure = nameMeasure;
+		this.valueMeasureString = valueMeasureString;
 	}
+
+
 
 
 	public String getNameMeasure() {

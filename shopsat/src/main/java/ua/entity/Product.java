@@ -37,7 +37,7 @@ public class Product  extends AbstractClass{
 
 	private MeasureDigital measureDigital;
 	
-	private ValueDigital valueDigital;
+//	private ValueDigital valueDigital;
 	
 
 	@Column(name="_description", length = 10000)
@@ -51,7 +51,7 @@ public class Product  extends AbstractClass{
 	private MeasureString measure;
 	
 	
-	private ValueString valueString;
+//	private ValueString valueString;
 	
 
 	
@@ -84,11 +84,9 @@ public class Product  extends AbstractClass{
 		this.producer = producer;
 		this.model = model;
 		this.measureDigital = measureDigital;
-		this.valueDigital = valueDigital;
 		this.description = description;
 		this.price = price;
 		this.measure = measure;
-		this.valueString = valueString;
 		this.file = file;
 		this.version = version;
 	}
@@ -203,24 +201,6 @@ public class Product  extends AbstractClass{
 	}
 
 
-	public ValueDigital getValueDigital() {
-		return valueDigital;
-	}
-
-
-	public void setValueDigital(ValueDigital valueDigital) {
-		this.valueDigital = valueDigital;
-	}
-
-
-	public ValueString getValueString() {
-		return valueString;
-	}
-
-
-	public void setValueString(ValueString valueString) {
-		this.valueString = valueString;
-	}
 
 
 	
