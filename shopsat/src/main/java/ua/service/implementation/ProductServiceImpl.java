@@ -132,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
 			productForm.setModel(product.getModel());
 			productForm.setDescription(product.getDescription());
 			productForm.setPrice(product.getPrice().toString());
-			productForm.setMeasure(product.getMeasure());
+//			productForm.setMeasure(product.getMeasure());
 			productForm.setFile(product.getFile());
 			return productForm;
 		}
@@ -169,7 +169,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setModel(productForm.getModel());
 		product.setDescription(productForm.getDescription());
 		product.setPrice(new BigDecimal(productForm.getPrice().replace(',', '.')));
-		product.setMeasure(productForm.getMeasure());
+//		product.setMeasure(productForm.getMeasure());
 
 		productRepository.saveAndFlush(product);
 		
@@ -198,7 +198,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setModel(productForm.getModel());
 		product.setDescription(productForm.getDescription());
 		product.setPrice(new BigDecimal(productForm.getPrice().replace(',', '.')));
-		product.setMeasure(productForm.getMeasure());
+//		product.setMeasure(productForm.getMeasure());
 
 		productRepository.saveAndFlush(product);
 		

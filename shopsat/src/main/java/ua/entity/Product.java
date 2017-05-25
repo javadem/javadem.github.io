@@ -34,11 +34,9 @@ public class Product  extends AbstractClass{
 	@JoinColumn(name = "model_id")
 	private Model model;
 	
-
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "measureDigital_id")
 	private MeasureDigital measureDigital;
-	
-//	private ValueDigital valueDigital;
-	
 
 	@Column(name="_description", length = 10000)
 	private String description;
@@ -48,12 +46,12 @@ public class Product  extends AbstractClass{
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "measure_id")
-	private MeasureString measure;
+	private MeasureString measureString;
 	
 	
 //	private ValueString valueString;
 	
-
+//	private ValueDigital valueDigital;
 	
 	@Transient
 	private MultipartFile file;
@@ -76,23 +74,20 @@ public class Product  extends AbstractClass{
 	
 	}
 
-
-	public Product(Producer producer, Model model, MeasureDigital measureDigital, ValueDigital valueDigital,
-			String description, BigDecimal price, MeasureString measure, ValueString valueString, MultipartFile file,
-			Integer version) {
+	
+	
+	public Product(Producer producer, Model model, MeasureDigital measureDigital, String description, BigDecimal price,
+			MeasureString measureString, MultipartFile file, Integer version) {
 		super();
 		this.producer = producer;
 		this.model = model;
 		this.measureDigital = measureDigital;
 		this.description = description;
 		this.price = price;
-		this.measure = measure;
+		this.measureString = measureString;
 		this.file = file;
 		this.version = version;
 	}
-
-
-
 
 
 
@@ -119,18 +114,19 @@ public class Product  extends AbstractClass{
 		this.description = description;
 	}
 
-	
 
 
 
-	public MeasureString getMeasure() {
-		return measure;
+	public MeasureString getMeasureString() {
+		return measureString;
 	}
 
 
-	public void setMeasure(MeasureString measure) {
-		this.measure = measure;
+
+	public void setMeasureString(MeasureString measureString) {
+		this.measureString = measureString;
 	}
+
 
 
 	@Override

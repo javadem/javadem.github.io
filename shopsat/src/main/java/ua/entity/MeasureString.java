@@ -14,15 +14,16 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.persistence.Index;
 
 @Entity
-@Table(name="measure", indexes=@Index(columnList = "_name"))
+@Table(name="measureString", indexes=@Index(columnList = "_name"))
 public class MeasureString extends AbstractClass{
 	
 	@Column(name="_name")
 	private String nameMeasure;
 	
+	@Column(name="_value")
 	private String valueMeasureString;
 	
-	@OneToMany(mappedBy="measure")
+	@OneToMany(mappedBy="measureString")
 	private List<Product> products = new ArrayList<>();
 	
 
